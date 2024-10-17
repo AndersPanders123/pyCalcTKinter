@@ -31,6 +31,20 @@ def calculate(type):
                 result_label.config(text="Cannot divide by zero!")
                 return
             result = num1 / num2
+        elif type == "power":
+            result = num1 ** num2
+        elif type == "average":
+            result = (num1 + num2) / 2
+        elif type == "max":
+            result = max(num1, num2)
+        elif type == "min":
+            result = min(num1, num2)
+        elif type == "modulus":
+            result = num1 % num2
+        elif type == "abs_diff":
+            result = abs(num1 - num2)
+        elif type == "floor_divide":
+            result = num1 // num2
         else:
             result_label.config(text="Please enter valid numbers :)")
             return
@@ -68,5 +82,33 @@ multiply_button.pack(side=tk.LEFT, padx=10, pady=10)
 # Knapp for deling
 divide_button = tk.Button(button_frame, text="/", font=("Arial", 16), command=lambda: calculate("divide"))
 divide_button.pack(side=tk.LEFT, padx=10, pady=10)
+
+# Knapp for modulus
+modulus_button = tk.Button(button_frame, text="%", font=("Arial", 16), command=lambda: calculate("modulus"))
+modulus_button.pack(side=tk.LEFT, padx=10, pady=10)
+
+# Knapp for power
+power_button = tk.Button(button_frame, text="^", font=("Arial", 16), command=lambda: calculate("power"))
+power_button.pack(side=tk.LEFT, padx=10, pady=10)
+
+# Knapp for max
+max_button = tk.Button(button_frame, text="max", font=("Arial", 16), command=lambda: calculate("max"))
+max_button.pack(side=tk.LEFT, padx=10, pady=10)
+
+# Knapp for min
+min_button = tk.Button(button_frame, text="min", font=("Arial", 16), command=lambda: calculate("min"))
+min_button.pack(side=tk.LEFT, padx=10, pady=10)
+
+# Knapp for gjennomsnitt
+average_button = tk.Button(button_frame, text="avg", font=("Arial", 16), command=lambda: calculate("average"))
+average_button.pack(side=tk.LEFT, padx=10, pady=10)
+
+# Knapp for abs
+abs_diff_button = tk.Button(button_frame, text="|diff|", font=("Arial", 16), command=lambda: calculate("abs_diff"))
+abs_diff_button.pack(side=tk.LEFT, padx=10, pady=10)
+
+# Knapp for floor
+floor_div_button = tk.Button(button_frame, text="//", font=("Arial", 16), command=lambda: calculate("floor_divide"))
+floor_div_button.pack(side=tk.LEFT, padx=10, pady=10)
 
 window.mainloop()
