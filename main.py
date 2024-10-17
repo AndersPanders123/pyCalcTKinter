@@ -10,12 +10,18 @@ input2 = tk.StringVar()
 result_label = tk.Label(window, text="Result", font=("Arial", 24))
 result_label.pack()
 
+def formatResult(value):
+    if value.is_integer():
+        return int(value)
+    else:
+        return f"{value:.1f}"
+
 def add():
     try:
         num1 = float(input1.get())
         num2 = float(input2.get())
         result = num1 + num2
-        result_label.config(text="Result: " + str(result))
+        result_label.config(text=f"Result: {formatResult(result)}")
     except ValueError:
         result_label.config(text="Please enter valid numbers :)")
 
@@ -24,7 +30,7 @@ def subtract():
         num1 = float(input1.get())
         num2 = float(input2.get())
         result = num1 - num2
-        result_label.config(text="Result: " + str(result))
+        result_label.config(text=f"Result: {formatResult(result)}")
     except ValueError:
         result_label.config(text="Please enter valid numbers :)")
 
@@ -33,7 +39,7 @@ def multiply():
         num1 = float(input1.get())
         num2 = float(input2.get())
         result = num1 * num2
-        result_label.config(text="Result: " + str(result))
+        result_label.config(text=f"Result: {formatResult(result)}")
     except ValueError:
         result_label.config(text="Please enter valid numbers :)")
 
@@ -45,7 +51,7 @@ def divide():
             result_label.config(text="Error: Divison by zero")
         else:
             result = num1 / num2
-            result_label.config(text="Result: " + str(result))
+            result_label.config(text=f"Result: {formatResult(result)}")
     except ValueError:
         result_label.config(text="Please ender valdig nummbers :)")
     
