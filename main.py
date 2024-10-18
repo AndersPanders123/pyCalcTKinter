@@ -1,7 +1,16 @@
 import tkinter as tk
+import random
+import json
+
+
+with open("windowTitles.json", "r") as file:
+    data = json.load(file)
+
+jsonData = data["windowTitles"]
+random_title = random.choice(jsonData)
 
 window = tk.Tk()
-window.title("Terraria > Minecraft")
+window.title(random_title)
 window.geometry("400x600")
 
 input1 = tk.StringVar()
