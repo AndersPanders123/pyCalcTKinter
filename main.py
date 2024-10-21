@@ -11,7 +11,7 @@ random_title = random.choice(jsonData)
 
 window = tk.Tk()
 window.title(random_title)
-window.geometry("400x600")
+window.geometry("450x600")
 
 input1 = tk.StringVar()
 input2 = tk.StringVar()
@@ -40,10 +40,20 @@ def calculate(type):
                 result_label.config(text="Cannot divide by zero!")
                 return
             result = num1 / num2
+        elif type == "power":
+            result = num1 ** num2
+        elif type == "average":
+            result = (num1 + num2) / 2
+        elif type == "max":
+            result = max(num1, num2)
+        elif type == "min":
+            result = min(num1, num2)
+        elif type == "abs_diff":
+            result = abs(num1 - num2)
         else:
             result_label.config(text="Please enter valid numbers :)")
             return
-        
+                 
         result_label.config(text=f"Result: {formatResult(result)}")
     except ValueError:
         result_label.config(text="Please enter valid numbers :)")
@@ -62,6 +72,9 @@ input2_entry.pack(pady=5)
 button_frame = tk.Frame(window)
 button_frame.pack(pady=20)
 
+button_frame2 = tk.Frame(window)
+button_frame2.pack(pady=20)
+
 # Knapp for pluss
 add_button = tk.Button(button_frame, text="+", font=("Arial", 16), command=lambda: calculate("add"))
 add_button.pack(side=tk.LEFT, padx=10, pady=10)
@@ -77,5 +90,25 @@ multiply_button.pack(side=tk.LEFT, padx=10, pady=10)
 # Knapp for deling
 divide_button = tk.Button(button_frame, text="/", font=("Arial", 16), command=lambda: calculate("divide"))
 divide_button.pack(side=tk.LEFT, padx=10, pady=10)
+
+# Knapp for power
+power_button = tk.Button(button_frame, text="^", font=("Arial", 16), command=lambda: calculate("power"))
+power_button.pack(side=tk.LEFT, padx=10, pady=10)
+
+# Knapp for max
+max_button = tk.Button(button_frame2, text="max", font=("Arial", 16), command=lambda: calculate("max"))
+max_button.pack(side=tk.LEFT, padx=10, pady=10)
+
+# Knapp for min
+min_button = tk.Button(button_frame2, text="min", font=("Arial", 16), command=lambda: calculate("min"))
+min_button.pack(side=tk.LEFT, padx=10, pady=10)
+
+# Knapp for gjennomsnitt
+average_button = tk.Button(button_frame2, text="avg", font=("Arial", 16), command=lambda: calculate("average"))
+average_button.pack(side=tk.LEFT, padx=10, pady=10)
+
+# Knapp for abs
+abs_diff_button = tk.Button(button_frame2, text="diff", font=("Arial", 16), command=lambda: calculate("abs_diff"))
+abs_diff_button.pack(side=tk.LEFT, padx=10, pady=10)
 
 window.mainloop()
