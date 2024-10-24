@@ -55,8 +55,7 @@ def calculate(type):
             result = abs(num1 - num2)
         else:
             result_label.config(text="Please enter valid numbers :)")
-            return
-                 
+            return 
         result_label.config(text=f"Result: {formatResult(result)}")
     except ValueError:
         result_label.config(text="Please enter valid numbers :)")
